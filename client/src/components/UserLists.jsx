@@ -32,9 +32,11 @@ export default function UserLists() {
   return (
     <div className="container">
       <h2>CRUD User</h2>
-      <Link to="/createuser" className="btn btn-success my-3">
-        Create +
-      </Link>
+      <div className="d-flex justify-content-start">
+        <Link to="/createuser" className="btn btn-success my-3">
+          Create +
+        </Link>
+      </div>
       <table className="table">
         <thead>
           <tr>

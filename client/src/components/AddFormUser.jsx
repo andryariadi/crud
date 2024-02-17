@@ -40,7 +40,8 @@ export default function AddFormUser() {
   console.log(inputUser, "<-----addinputUser");
   return (
     <>
-      <div className="d-flex w-100 vh-100 justify-content-center align-items-center">
+      <div className="d-flex flex-column w-100 vh-100 justify-content-center align-items-center">
+        <h2 className="mb-4">Add New User</h2>
         <div className="w-50 border bg-secondary text-white p-5">
           <form className="d-flex flex-column gap-3">
             <input type="text" placeholder="Name" className="form-control py-2" name="name" value={inputUser.name} onChange={handleChangeUser} />
