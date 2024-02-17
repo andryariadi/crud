@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getUsers } from "../libs/data";
 
 export default function UserLists() {
@@ -18,7 +18,7 @@ export default function UserLists() {
 
   return (
     <div className="container">
-      <h2>CRUD USER</h2>
+      <h2>CRUD User</h2>
       <button className="btn btn-success my-3">Create +</button>
       <table className="table">
         <thead>
