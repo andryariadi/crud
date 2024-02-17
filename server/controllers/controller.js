@@ -12,9 +12,9 @@ class Controller {
   }
 
   static async getUserById(req, res) {
-    const { id } = req.params;
+    const { slug } = req.params;
     try {
-      const user = await User.findById(id);
+      const user = await User.findById(slug);
       res.status(200).json(user);
     } catch (error) {
       console.log(error);
@@ -34,9 +34,9 @@ class Controller {
   }
 
   static async updateUser(req, res) {
-    const { id } = req.params;
+    const { slug } = req.params;
     try {
-      const user = await User.findByIdAndUpdate(id, req.body, { new: true });
+      const user = await User.findByIdAndUpdate(slug, req.body, { new: true });
       res.status(200).json(user);
     } catch (error) {
       console.log(error);
@@ -45,9 +45,9 @@ class Controller {
   }
 
   static async deleteUser(req, res) {
-    const { id } = req.params;
+    const { slug } = req.params;
     try {
-      const user = await User.findByIdAndDelete(id);
+      const user = await User.findByIdAndDelete(slug);
       res.status(200).json({ message: `${user.name} successfully deleted` });
     } catch (error) {
       console.log(error);

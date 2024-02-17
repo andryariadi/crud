@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getUsers } from "../libs/data";
+import { deletedUser, getUsers } from "../libs/data";
 import { Link } from "react-router-dom";
 
 export default function UserLists() {
@@ -17,7 +17,17 @@ export default function UserLists() {
     fetchData();
   }, []);
 
-  console.log(users, "<----diuserlist");
+  async function deleteUser(slug) {
+    try {
+      await deletedUser(slug);
+      // Setelah penghapusan berhasil, perbarui daftar pengguna
+      setUsers(users.filter((user) => user._id !== slug));
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  }
+
+  console.log(users, "<---userlist");
 
   return (
     <div className="container">
@@ -43,8 +53,12 @@ export default function UserLists() {
               <td>{user.email}</td>
               <td>{user.gender}</td>
               <td>
-                <button className="btn btn-primary mx-3">Edit</button>
-                <button className="btn btn-danger">Delete</button>
+                <Link to={`/updateuser/${user._id}`} className="btn btn-primary mx-3">
+                  Edit
+                </Link>
+                <button onClick={() => deleteUser(user._id)} className="btn btn-danger">
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

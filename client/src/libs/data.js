@@ -9,6 +9,15 @@ export const getUsers = async () => {
   }
 };
 
+export const getUserById = async (slug) => {
+  try {
+    const res = await axios.get(`http://localhost:3000/users/${slug}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const createUser = async ({ name, email, gender }) => {
   try {
     const res = await axios.post(`http://localhost:3000/users`, {
@@ -22,7 +31,24 @@ export const createUser = async ({ name, email, gender }) => {
   }
 };
 
-//   const [name, setName] = useState();
-//   const [email, setEmail] = useState();
-//   const [gender, setGender] = useState("male");
-//   console.log({ name, email, gender }, "<-----diformuser");
+export const updateUser = async ({ slug, name, email, gender }) => {
+  try {
+    const res = await axios.put(`http://localhost:3000/users/${slug}`, {
+      name,
+      email,
+      gender,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deletedUser = async (slug) => {
+  try {
+    const res = await axios.delete(`http://localhost:3000/users/${slug}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

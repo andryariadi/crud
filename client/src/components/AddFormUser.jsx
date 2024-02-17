@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createUser } from "../libs/data";
 import { useNavigate } from "react-router-dom";
 
-export default function FormUser() {
+export default function AddFormUser() {
   const navigate = useNavigate();
 
   //   OLD WAY:
@@ -37,7 +37,7 @@ export default function FormUser() {
   };
 
   //   console.log({ name, email, gender }, "<-----diformuser");
-  console.log(inputUser, "<-----inputUser");
+  console.log(inputUser, "<-----addinputUser");
   return (
     <>
       <div className="d-flex w-100 vh-100 justify-content-center align-items-center">

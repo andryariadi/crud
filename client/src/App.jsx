@@ -1,7 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import UserLists from "./components/UserLists";
-import FormUser from "./components/FormUser";
+import AddFormUser from "./components/AddFormUser";
+import UpdateFormUser from "./components/UpdateFormUser";
+
 Route;
 function App() {
   return (
@@ -9,7 +11,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<UserLists />} />
-          <Route path="/createuser" element={<FormUser />} />
+          <Route path="/createuser" element={<AddFormUser />} />
+          <Route path="/updateuser/:slug" element={<UpdateFormUser />} />
         </Routes>
       </BrowserRouter>
     </>
