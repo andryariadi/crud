@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getUsers } from "../libs/data";
+import { Link } from "react-router-dom";
 
 export default function UserLists() {
   const [users, setUsers] = useState([]);
@@ -16,10 +17,14 @@ export default function UserLists() {
     fetchData();
   }, []);
 
+  console.log(users, "<----diuserlist");
+
   return (
     <div className="container">
       <h2>CRUD User</h2>
-      <button className="btn btn-success my-3">Create +</button>
+      <Link to="/createuser" className="btn btn-success my-3">
+        Create +
+      </Link>
       <table className="table">
         <thead>
           <tr>
