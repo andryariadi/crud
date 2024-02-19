@@ -7,7 +7,7 @@ const productSlice = createSlice({
   },
   reducers: {
     getAllProducts: (state, action) => {
-      // console.log({ state, action }, "<-----productslice");
+      console.log({ state, action }, "<-----productslice");
       state.products = action.payload.map((product) => {
         return {
           id: product._id,
@@ -18,11 +18,16 @@ const productSlice = createSlice({
       });
     },
     addProduct: (state, action) => {
-      console.log(action.payload, "<-----productslice");
+      // console.log(action.payload, "<-----productslice");
       state.products.push(action.payload);
+    },
+    editProduct: (state, action) => {
+      console.log({ state, action }, "<-----productslice");
+      const index = state.products.findIndex((prod) => prod.id === action.payload._id);
+      state.products[index] = action.payload;
     },
   },
 });
 
 export default productSlice.reducer;
-export const { getAllProducts, addProduct } = productSlice.actions;
+export const { getAllProducts, addProduct, editProduct } = productSlice.actions;

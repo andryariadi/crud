@@ -82,3 +82,16 @@ export const createProduct = async (inputProduct) => {
     console.log(error);
   }
 };
+
+export const updateProduct = async ({ slug, title, price, categories }) => {
+  try {
+    const res = await axios.put(`http://localhost:3000/products/${slug}`, {
+      title,
+      price,
+      categories,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
