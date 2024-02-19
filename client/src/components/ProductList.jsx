@@ -1,20 +1,31 @@
-// import { useEffect } from "react";
-// import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 // import { fetchProducts } from "./ProductReducer";
 import { Link } from "react-router-dom";
+import { getProducts } from "../libs/data";
+import { getAllProducts } from "../redux/ProductSlice";
 
 export default function ProductList() {
-  //   const dispatch = useDispatch();
-  //   const products = useSelector((state) => state.andry);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.andry.ariadi);
 
-  //   useEffect(() => {
-  //     // Panggil fetchProducts saat komponen dipasang (mounted)
-  //     dispatch(fetchProducts());
-  //   }, [dispatch]);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const productData = await getProducts();
+        dispatch(getAllProducts(productData));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  console.log(products, "<---productlist");
 
   return (
     <div className="container">
-      <h2>CRUD Product</h2>
+      <h2>CRUD Product with Redux Toolkit</h2>
       <div className="d-flex justify-content-start">
         <Link to="/createuser" className="btn btn-success my-3">
           Create +
@@ -30,7 +41,7 @@ export default function ProductList() {
             <th>Action</th>
           </tr>
         </thead>
-        {/* <tbody>
+        <tbody>
           {products.map((product, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
@@ -45,7 +56,7 @@ export default function ProductList() {
               </td>
             </tr>
           ))}
-        </tbody> */}
+        </tbody>
       </table>
     </div>
   );
