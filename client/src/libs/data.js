@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// Data User:
 export const getUsers = async () => {
   try {
     const res = await axios.get(`http://localhost:3000/users`);
