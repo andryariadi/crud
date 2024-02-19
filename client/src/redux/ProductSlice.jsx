@@ -7,10 +7,10 @@ const productSlice = createSlice({
   },
   reducers: {
     getAllProducts: (state, action) => {
-      console.log({ state, action }, "<-----productslice");
+      console.log({ state, action }, "<-----productslice1");
       state.products = action.payload.map((product) => {
         return {
-          id: product._id,
+          _id: product._id,
           title: product.title,
           price: product.price,
           categories: product.categories,
@@ -22,12 +22,16 @@ const productSlice = createSlice({
       state.products.push(action.payload);
     },
     editProduct: (state, action) => {
-      console.log({ state, action }, "<-----productslice");
-      const index = state.products.findIndex((prod) => prod.id === action.payload._id);
+      console.log({ state, action }, "<-----productslice2");
+      const index = state.products.findIndex((prod) => prod._id === action.payload._id);
       state.products[index] = action.payload;
+    },
+    deletingProduct: (state, action) => {
+      console.log({ state, action }, "<-----productslice3");
+      state.products = state.products.filter((products) => products._id !== action.payload._id);
     },
   },
 });
 
 export default productSlice.reducer;
-export const { getAllProducts, addProduct, editProduct } = productSlice.actions;
+export const { getAllProducts, addProduct, editProduct, deletingProduct } = productSlice.actions;

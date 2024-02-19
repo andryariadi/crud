@@ -5,11 +5,11 @@ import AddFormUser from "./components/AddFormUser";
 import UpdateFormUser from "./components/UpdateFormUser";
 import ProductList from "./components/ProductList";
 import AddFormProduct from "./components/AddFormProduct";
+import UpdateFormProduct from "./components/UpdateFormProduct";
 import { useEffect } from "react";
 import { getProducts } from "./libs/data";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "./redux/ProductSlice";
-import UpdateFormProduct from "./components/UpdateFormProduct";
 
 Route;
 function App() {

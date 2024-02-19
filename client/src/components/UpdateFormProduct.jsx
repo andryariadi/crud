@@ -9,7 +9,7 @@ export default function UpdateFormProduct() {
   const dispatch = useDispatch();
   const { slug } = useParams();
   const products = useSelector((state) => state.productStore.products);
-  const product = products.find((prod) => prod.id === slug);
+  const product = products.find((prod) => prod._id === slug);
 
   const [inputProduct, setInputProduct] = useState({
     title: "",

@@ -95,3 +95,12 @@ export const updateProduct = async ({ slug, title, price, categories }) => {
     console.log(error);
   }
 };
+
+export const deletedProduct = async (slug) => {
+  try {
+    const res = await axios.delete(`http://localhost:3000/products/${slug}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

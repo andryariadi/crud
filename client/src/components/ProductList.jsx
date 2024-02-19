@@ -1,8 +1,20 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { deletedProduct } from "../libs/data";
+import { deletingProduct } from "../redux/ProductSlice";
 
 export default function ProductList() {
   const products = useSelector((state) => state.productStore.products);
+  const dispatch = useDispatch();
+
+  async function handleDelete(slug) {
+    try {
+      await deletedProduct(slug);
+      dispatch(deletingProduct({ _id: slug }));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   console.log(products, "<---productlist");
 
@@ -19,8 +31,8 @@ export default function ProductList() {
           <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Email</th>
-            <th>Gender</th>
+            <th>Price</th>
+            <th>Categories</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -32,10 +44,12 @@ export default function ProductList() {
               <td>{product.price}</td>
               <td>{product.categories}</td>
               <td>
-                <Link to={`/updateproduct/${product.id}`} className="btn btn-primary mx-3">
+                <Link to={`/updateproduct/${product._id}`} className="btn btn-primary mx-3">
                   Edit
                 </Link>
-                <button className="btn btn-danger">Delete</button>
+                <button onClick={() => handleDelete(product._id)} className="btn btn-danger">
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
