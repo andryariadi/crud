@@ -3,12 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const productSlice = createSlice({
   name: "products",
   initialState: {
-    ariadi: [],
+    products: [],
   },
   reducers: {
     getAllProducts: (state, action) => {
-      console.log({ state, action }, "<-----productslice");
-      state.ariadi = action.payload.map((product) => {
+      // console.log({ state, action }, "<-----productslice");
+      state.products = action.payload.map((product) => {
         return {
           id: product._id,
           title: product.title,
@@ -17,8 +17,12 @@ const productSlice = createSlice({
         };
       });
     },
+    addProduct: (state, action) => {
+      console.log(action.payload, "<-----productslice");
+      state.products.push(action.payload);
+    },
   },
 });
 
 export default productSlice.reducer;
-export const { getAllProducts } = productSlice.actions;
+export const { getAllProducts, addProduct } = productSlice.actions;

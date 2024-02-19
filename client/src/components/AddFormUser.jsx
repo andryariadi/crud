@@ -45,8 +45,11 @@ export default function AddFormUser() {
         <div className="w-50 border bg-secondary text-white p-5">
           <form className="d-flex flex-column gap-3">
             <input type="text" placeholder="Name" className="form-control py-2" name="name" value={inputUser.name} onChange={handleChangeUser} />
-            <input type="text" placeholder="Email" className="form-control py-2" name="email" value={inputUser.email} onChange={handleChangeUser} />
+            <input type="email" placeholder="Email" className="form-control py-2" name="email" value={inputUser.email} onChange={handleChangeUser} />
             <select name="gender" className="form-select py-2" value={inputUser.gender} onChange={handleChangeUser}>
+              <option disabled selected>
+                Gender
+              </option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>

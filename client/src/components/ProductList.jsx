@@ -1,25 +1,8 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-// import { fetchProducts } from "./ProductReducer";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getProducts } from "../libs/data";
-import { getAllProducts } from "../redux/ProductSlice";
 
 export default function ProductList() {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.andry.ariadi);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const productData = await getProducts();
-        dispatch(getAllProducts(productData));
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchData();
-  }, []);
+  const products = useSelector((state) => state.productStore.products);
 
   console.log(products, "<---productlist");
 
@@ -27,7 +10,7 @@ export default function ProductList() {
     <div className="container">
       <h2>CRUD Product with Redux Toolkit</h2>
       <div className="d-flex justify-content-start">
-        <Link to="/createuser" className="btn btn-success my-3">
+        <Link to="/createproduct" className="btn btn-success my-3">
           Create +
         </Link>
       </div>
@@ -49,7 +32,7 @@ export default function ProductList() {
               <td>{product.price}</td>
               <td>{product.categories}</td>
               <td>
-                <Link to="" className="btn btn-primary mx-3">
+                <Link to={`/updateproduct/${product.id}`} className="btn btn-primary mx-3">
                   Edit
                 </Link>
                 <button className="btn btn-danger">Delete</button>

@@ -62,3 +62,23 @@ export const getProducts = async () => {
     console.log(error);
   }
 };
+
+export const getProductById = async (slug) => {
+  try {
+    const res = await axios.get(`http://localhost:3000/products/${slug}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const createProduct = async (inputProduct) => {
+  try {
+    const res = await axios.post(`http://localhost:3000/products`, {
+      ...inputProduct,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
